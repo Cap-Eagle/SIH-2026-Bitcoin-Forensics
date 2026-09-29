@@ -1,8 +1,24 @@
-k# ₿ Bitcoin Forensics Intelligence Platform
+# ₿ Bitcoin Forensics Intelligence Platform
 
-> AI-assisted Bitcoin transaction intelligence for detecting suspicious entities, analyzing behavioral patterns, and prioritizing investigative leads.
+<p align="center">
+  <b>AI-assisted blockchain intelligence for suspicious-entity detection,
+  behavioral analysis, and explainable forensic investigation.</b>
+</p>
 
-**SIH 2026 · Bitcoin Forensics · V6.1**
+<p align="center">
+  <b>SIH 2026 · Bitcoin Forensics · V6.1</b>
+</p>
+
+---
+
+![Bitcoin Forensics Investigation Dashboard](docs/images/dashboard-overview.png)
+
+<p align="center">
+  <a href="#-quick-start">Quick Start</a> •
+  <a href="#-how-it-works">Architecture</a> •
+  <a href="#-behavioral-intelligence">Detection</a> •
+  <a href="#-investigation-dashboard">Dashboard</a>
+</p>
 
 ---
 
@@ -252,34 +268,6 @@ This allows investigators to understand **why an entity was prioritized**, rathe
 
 ---
 
-# 📊 Evaluation
-
-The V6.1 behavioral detector was evaluated using a held-out test split.
-
-| Metric | Result |
-|---|---:|
-| Accuracy | **99.42%** |
-| Precision | **100.00%** |
-| Recall | **98.31%** |
-| F1 Score | **99.15%** |
-| ROC-AUC | **0.9998** |
-| Average Precision | **0.9997** |
-
-Confusion matrix:
-
-```text
-TN = 112
-FP =   0
-FN =   1
-TP =  58
-```
-
-The benchmark uses a **70 / 15 / 15 train-validation-test split**.
-
-> **Important:** These results are measured on the project's synthetic benchmark dataset. They demonstrate performance within the generated evaluation environment and should not be interpreted as equivalent performance on unrestricted real-world Bitcoin investigations.
-
----
-
 # 🖥 Investigation Dashboard
 
 Launch the dashboard with:
@@ -302,101 +290,28 @@ The dashboard provides an investigation-oriented interface for exploring:
 
 The dashboard is designed as the primary interface for analysts and demonstration users.
 
----
+### Entity Investigation
 
-# 📁 Repository Structure
+![Entity Investigation](docs/images/entity-investigation.png)
 
-```text
-SIH-2026-Bitcoin-Forensics/
-│
-├── app/
-│   └── dashboard.py
-│
-├── data/
-│   ├── raw/
-│   ├── correlated/
-│   └── ground_truth/
-│
-├── models/
-├── outputs/
-│
-├── src/
-│   ├── ingest_data.py
-│   ├── correlate_csv.py
-│   ├── build_group_b_handoff.py
-│   ├── build_graph.py
-│   ├── resolve_entities.py
-│   ├── build_features_v3.py
-│   ├── build_behavior_features_v6.py
-│   ├── build_behavior_features_v61.py
-│   ├── train_anomaly_model_v5.py
-│   ├── final_detector_v61.py
-│   └── validate_project.py
-│
-├── generate_dataset.py
-├── requirements.txt
-│
-├── run_full_project.sh
-├── run_full_project.bat
-├── run_pipeline.sh
-├── run_pipeline.bat
-│
-└── README.md
-```
+Investigators can drill into prioritized entities to inspect behavioral
+signals, anomaly indicators, transaction relationships, and the reason
+codes responsible for an alert.
 
 ---
 
-# 👥 Team Development
+# 🛠 Usage & Development
 
-After cloning the repository, teammates can reproduce the complete environment using the full-project runner.
+The project is designed to be reproducible from the repository without
+requiring the generated datasets or intermediate pipeline artifacts to be
+stored in Git.
 
-### Generate data and run everything
+### Run the complete project
+
+Generate the dataset and execute the complete forensic pipeline:
 
 ```bash
 ./run_full_project.sh
-```
-
-### Run the pipeline using existing data
-
-```bash
-./run_pipeline.sh
-```
-
-### Validate the project
-
-```bash
-python src/validate_project.py
-```
-
-A successful validation should end with:
-
-```text
-PROJECT VALIDATION PASSED
-V6.1 artifacts are internally consistent.
-```
-
-### Launch the dashboard
-
-```bash
-streamlit run app/dashboard.py
-```
-
-For feature development, use separate Git branches:
-
-```bash
-git pull
-git checkout -b feature/my-feature
-
-# make changes
-
-git add .
-git commit -m "Add my feature"
-git push -u origin feature/my-feature
-```
-
-Changes can then be merged through a pull request.
-
----
 
 # ⚠️ Scope & Limitations
 
