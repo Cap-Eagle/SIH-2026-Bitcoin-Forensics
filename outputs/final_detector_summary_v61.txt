@@ -1,0 +1,63 @@
+FINAL BITCOIN FORENSICS DETECTOR — V6.1
+==============================================================================
+
+ARCHITECTURE
+------------------------------------------------------------------------------
+Primary model:
+    Random Forest behavioral classifier
+
+Primary features:
+    V6 + V6.1 behavioral features (83 features)
+
+Secondary signal:
+    Isolation Forest novelty percentile
+
+Feature construction:
+    Ground-truth independent
+
+HELD-OUT BENCHMARK
+------------------------------------------------------------------------------
+Threshold:          0.610389
+
+Accuracy:           0.994152
+Precision:          1.000000
+Recall:             0.983051
+F1:                 0.991453
+ROC-AUC:            0.999849
+Average Precision:  0.999718
+
+TN: 112
+FP: 0
+FN: 1
+TP: 58
+
+FINAL DEPLOYMENT
+------------------------------------------------------------------------------
+Entities scored: 81,198
+
+CRITICAL: 1,359
+HIGH:     98
+MEDIUM:   528
+LOW:      79,213
+
+OUTPUT
+------------------------------------------------------------------------------
+Alerts:
+/home/J3ff/AI/SIH/SIH_V6/outputs/final_entity_alerts_v61.csv
+
+Model:
+/home/J3ff/AI/SIH/SIH_V6/models/final_detector_v61.joblib
+
+Configuration:
+/home/J3ff/AI/SIH/SIH_V6/models/final_detector_config_v61.json
+
+IMPORTANT
+------------------------------------------------------------------------------
+The held-out metrics belong to the 70/15/15 benchmark model.
+
+After benchmark evaluation, the deployment model was retrained using all
+1,140 labelled entities so that all available labelled information is used
+for the final demonstration/deployment system.
+
+Isolation Forest remains available as a novelty signal for entities whose
+behavior differs from patterns represented in the labelled training data.

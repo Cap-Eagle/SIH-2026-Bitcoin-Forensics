@@ -1,0 +1,129 @@
+V6.1 BEHAVIORAL FEATURE BENCHMARK
+==============================================================================
+
+Purpose:
+Compare the original V5 feature set against the new V6/V6.1 behavioral features using the same labelled entities, split, classifier, and threshold-selection methodology.
+
+Labelled entities: 1,140
+Train: 798
+Validation: 171
+Test: 171
+Random Forest estimators: 300
+Minimum validation recall: 0.75
+
+FEATURE SETS
+------------------------------------------------------------------------------
+V5_BASELINE: 23
+V61_BEHAVIOR_ONLY: 83
+V5_PLUS_V61: 106
+
+HELD-OUT TEST RESULTS
+------------------------------------------------------------------------------
+
+V5_BASELINE
+  Features: 23
+  Threshold: 0.422678
+  Accuracy: 0.678363
+  Precision: 0.522727
+  Recall: 0.779661
+  F1: 0.625850
+  ROC-AUC: 0.770581
+  Average Precision: 0.700347
+  TN: 70
+  FP: 42
+  FN: 13
+  TP: 46
+
+V61_BEHAVIOR_ONLY
+  Features: 83
+  Threshold: 0.610389
+  Accuracy: 0.994152
+  Precision: 1.000000
+  Recall: 0.983051
+  F1: 0.991453
+  ROC-AUC: 0.999849
+  Average Precision: 0.999718
+  TN: 112
+  FP: 0
+  FN: 1
+  TP: 58
+
+V5_PLUS_V61
+  Features: 106
+  Threshold: 0.688333
+  Accuracy: 0.994152
+  Precision: 1.000000
+  Recall: 0.983051
+  F1: 0.991453
+  ROC-AUC: 0.999395
+  Average Precision: 0.998924
+  TN: 112
+  FP: 0
+  FN: 1
+  TP: 58
+
+CHANGE RELATIVE TO V5
+------------------------------------------------------------------------------
+
+V61_BEHAVIOR_ONLY
+  ROC-AUC delta: +0.229268
+  Average Precision delta: +0.299371
+  F1 delta: +0.365603
+  Precision delta: +0.477273
+  Recall delta: +0.203390
+  FP delta: -42
+  FN delta: -12
+
+V5_PLUS_V61
+  ROC-AUC delta: +0.228814
+  Average Precision delta: +0.298577
+  F1 delta: +0.365603
+  Precision delta: +0.477273
+  Recall delta: +0.203390
+  FP delta: -42
+  FN delta: -12
+
+SCENARIO PERFORMANCE
+------------------------------------------------------------------------------
+
+benign_control
+  V5_BASELINE: 42/112 (0.375000)
+  V61_BEHAVIOR_ONLY: 0/112 (0.000000)
+  V5_PLUS_V61: 0/112 (0.000000)
+
+fan_in_collection
+  V5_BASELINE: 8/8 (1.000000)
+  V61_BEHAVIOR_ONLY: 8/8 (1.000000)
+  V5_PLUS_V61: 8/8 (1.000000)
+
+fan_out_burst
+  V5_BASELINE: 3/3 (1.000000)
+  V61_BEHAVIOR_ONLY: 3/3 (1.000000)
+  V5_PLUS_V61: 3/3 (1.000000)
+
+ip_sharing
+  V5_BASELINE: 24/34 (0.705882)
+  V61_BEHAVIOR_ONLY: 34/34 (1.000000)
+  V5_PLUS_V61: 34/34 (1.000000)
+
+peel_chain
+  V5_BASELINE: 5/6 (0.833333)
+  V61_BEHAVIOR_ONLY: 6/6 (1.000000)
+  V5_PLUS_V61: 6/6 (1.000000)
+
+rapid_hop
+  V5_BASELINE: 3/5 (0.600000)
+  V61_BEHAVIOR_ONLY: 4/5 (0.800000)
+  V5_PLUS_V61: 4/5 (0.800000)
+
+structuring
+  V5_BASELINE: 3/3 (1.000000)
+  V61_BEHAVIOR_ONLY: 3/3 (1.000000)
+  V5_PLUS_V61: 3/3 (1.000000)
+
+IMPORTANT
+------------------------------------------------------------------------------
+This benchmark is diagnostic and supervised.
+It does NOT replace the production anomaly detector.
+Ground truth was not used to construct V6 or V6.1 behavioral features.
+All experiments used the same labelled entities and identical train/validation/test indices.

@@ -1,0 +1,127 @@
+# ============================================================
+# SIH V6.1 — Git Ignore
+# ============================================================
+
+
+# ------------------------------------------------------------
+# Python
+# ------------------------------------------------------------
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+.venv/
+venv/
+env/
+ENV/
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+
+# ------------------------------------------------------------
+# IDE / editor
+# ------------------------------------------------------------
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+
+# ------------------------------------------------------------
+# OS
+# ------------------------------------------------------------
+
+.DS_Store
+Thumbs.db
+
+
+# ------------------------------------------------------------
+# Logs
+# ------------------------------------------------------------
+
+logs/
+*.log
+
+
+# ------------------------------------------------------------
+# Generated RAW dataset
+#
+# Reconstructed using generate_dataset.py
+# ------------------------------------------------------------
+
+data/raw/*.csv
+!data/raw/.gitkeep
+
+
+# ------------------------------------------------------------
+# Generated correlation data
+# ------------------------------------------------------------
+
+data/correlated/*.csv
+!data/correlated/.gitkeep
+
+
+# ------------------------------------------------------------
+# Generated synthetic ground truth
+# ------------------------------------------------------------
+
+data/ground_truth/*.csv
+!data/ground_truth/.gitkeep
+
+
+# ------------------------------------------------------------
+# Large generated pipeline outputs
+# ------------------------------------------------------------
+
+outputs/address_to_entity.csv
+outputs/anomaly_model_v5.csv
+outputs/entity_behavior_features_v6.csv
+outputs/entity_behavior_features_v61.csv
+outputs/entity_edges.csv
+outputs/entity_features_v3.csv
+outputs/final_entity_alerts_v61.csv
+outputs/ground_truth_resolved_v3.csv
+
+
+# ------------------------------------------------------------
+# Generated trained model
+# ------------------------------------------------------------
+
+models/*.joblib
+
+
+# ------------------------------------------------------------
+# Keep directory structure
+# ------------------------------------------------------------
+
+!outputs/.gitkeep
+!models/.gitkeep
+
+
+# ------------------------------------------------------------
+# Keep small reproducibility / evaluation artifacts
+# ------------------------------------------------------------
+
+!outputs/behavior_benchmark_v61.csv
+!outputs/behavior_benchmark_scenarios_v61.csv
+!outputs/behavior_benchmark_summary_v61.txt
+!outputs/behavior_feature_importance_v61.csv
+
+!outputs/final_detector_evaluation_v61.csv
+!outputs/final_detector_summary_v61.txt
+
+!models/final_detector_config_v61.json
+
+# Local backups / temporary files
+*.backup
+*.bak
+*.tmp
+
+# Streamlit local configuration
+.streamlit/secrets.toml

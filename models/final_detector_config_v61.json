@@ -1,0 +1,23 @@
+{
+  "version": "V6.1",
+  "primary_model": "RandomForestClassifier",
+  "primary_features": "V6 + V6.1 behavioral features",
+  "feature_count": 83,
+  "n_estimators": 300,
+  "random_state": 42,
+  "threshold": 0.6103888888888889,
+  "minimum_validation_recall": 0.75,
+  "secondary_model": "Isolation Forest novelty score",
+  "held_out_metrics": {
+    "accuracy": 0.9941520467836257,
+    "precision": 1.0,
+    "recall": 0.9830508474576272,
+    "f1": 0.9914529914529915,
+    "roc_auc": 0.9998486682808717,
+    "average_precision": 0.9997175141242937,
+    "tn": 112,
+    "fp": 0,
+    "fn": 1,
+    "tp": 58
+  }
+}
