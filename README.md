@@ -312,6 +312,7 @@ Generate the dataset and execute the complete forensic pipeline:
 
 ```bash
 ./run_full_project.sh
+```
 
 ---
 
