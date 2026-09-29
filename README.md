@@ -313,6 +313,8 @@ Generate the dataset and execute the complete forensic pipeline:
 ```bash
 ./run_full_project.sh
 
+---
+
 # ⚠️ Scope & Limitations
 
 This platform is an **investigative decision-support system**, not a mechanism for automatically determining criminal activity.
