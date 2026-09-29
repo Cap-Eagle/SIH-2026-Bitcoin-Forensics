@@ -125,3 +125,4 @@ models/*.joblib
 
 # Streamlit local configuration
 .streamlit/secrets.toml
+README_FULL.md

@@ -1,88 +1,124 @@
-# SIH 2026 — SIH26146 Bitcoin Forensics V6.1
+k# ₿ Bitcoin Forensics Intelligence Platform
 
-An offline Bitcoin forensic intelligence system for correlating blockchain and P2P network evidence, resolving transaction behavior, detecting suspicious activity, and generating explainable investigative leads.
+> AI-assisted Bitcoin transaction intelligence for detecting suspicious entities, analyzing behavioral patterns, and prioritizing investigative leads.
+
+**SIH 2026 · Bitcoin Forensics · V6.1**
 
 ---
 
-## Goal
+## Overview
 
-Build an end-to-end forensic pipeline capable of transforming raw Bitcoin transaction and network metadata into prioritized investigative alerts.
+The **Bitcoin Forensics Intelligence Platform** is an offline investigative system that combines blockchain transaction data with network-layer metadata to identify suspicious Bitcoin entities and transaction behavior.
+
+The platform performs:
+
+- Blockchain and network-data correlation
+- Wallet/entity resolution
+- Transaction graph analysis
+- Behavioral feature engineering
+- Supervised suspicious-behavior detection
+- Unsupervised novelty detection
+- Explainable risk prioritization
+- Interactive forensic investigation
+
+The final system analyzes **81,198 derived entities using 83 behavioral features** and generates prioritized investigative leads through an interactive Streamlit dashboard.
+
+---
+
+## ✨ Key Capabilities
+
+| Capability | Description |
+|---|---|
+| 🔗 Entity Resolution | Groups related Bitcoin addresses into investigative entities |
+| 🕸 Graph Analysis | Reconstructs relationships and transaction flows between entities |
+| ⚡ Rapid-Hop Detection | Identifies funds forwarded rapidly between entities |
+| 💸 Peel-Chain Analysis | Detects repeated fund-splitting and forwarding behavior |
+| 📊 Structuring Detection | Identifies suspicious repeated or structured transaction behavior |
+| 🌐 Network Correlation | Correlates blockchain activity with P2P network observations |
+| 🧠 Behavioral Detection | Uses 83 behavioral features to classify suspicious activity |
+| 🔍 Novelty Detection | Detects unusual entities using Isolation Forest |
+| 🏷 Explainable Alerts | Provides human-readable reason codes for alerts |
+| 📈 Investigation Dashboard | Provides an interactive interface for exploring results |
+
+---
+
+# 🧠 How It Works
 
 ```text
-Blockchain transactions + P2P network events
-                    │
-                    ▼
-         Blockchain ↔ P2P Correlation
-                    │
-                    ▼
-          Transaction Graph Construction
-                    │
-                    ▼
-              Entity Resolution
-                    │
-                    ▼
-             Feature Engineering
-        V3 base + V6 + V6.1 behavior
-                    │
-                    ▼
-        ┌─────────────────────────┐
-        │ Random Forest Detector  │
-        │ Isolation Forest        │
-        │ Novelty Signal          │
-        └────────────┬────────────┘
-                     │
-                     ▼
-          Explainable Risk Scoring
-                     │
-                     ▼
-       CRITICAL / HIGH / MEDIUM / LOW
-                     │
-                     ▼
-        Forensic Investigation Dashboard
+             RAW DATA
+                │
+       ┌────────┴────────┐
+       │                 │
+ Blockchain Data    Network Events
+       │                 │
+       └────────┬────────┘
+                ▼
+      Blockchain ↔ P2P
+          Correlation
+                │
+                ▼
+        Transaction Graph
+                │
+                ▼
+         Entity Resolution
+                │
+                ▼
+       Feature Engineering
+                │
+       ┌────────┴────────┐
+       │                 │
+   V6 Features      V6.1 Features
+       │                 │
+       └────────┬────────┘
+                │
+        83 Behavioral
+           Features
+                │
+       ┌────────┴────────┐
+       │                 │
+ Random Forest      Isolation Forest
+Behavior Detector   Novelty Detector
+       │                 │
+       └────────┬────────┘
+                ▼
+       Explainable Risk
+            Alerts
+                │
+                ▼
+      Investigation Dashboard
 ```
 
----
+The detector combines two complementary signals:
 
-## Key Capabilities
+**Behavioral probability** — how closely an entity resembles known suspicious behavioral patterns.
 
-- Bitcoin transaction graph construction
-- Blockchain/P2P network correlation
-- Address and entity resolution
-- Behavioral feature engineering
-- Temporal transaction analysis
-- Rapid forwarding detection
-- Multi-hop chain analysis
-- Layering-pattern detection
-- Structuring-pattern detection
-- Peel-chain behavior analysis
-- Fan-in and fan-out detection
-- Shared source-IP analysis
-- Network evidence aggregation
-- Random Forest behavioral classification
-- Isolation Forest novelty detection
-- Explainable reason codes
-- Risk-based investigative prioritization
-- Interactive Streamlit investigation dashboard
-- End-to-end project validation
-- Synthetic dataset generation for reproducibility
+**Novelty percentile** — how unusual the entity is compared with the wider population.
 
 ---
 
-# Quick Start
+# 🚀 Quick Start
 
 ## Linux / macOS
 
-Create and activate a virtual environment:
+Clone the repository:
 
 ```bash
-python -m venv .venv
+git clone https://github.com/Cap-Eagle/SIH-2026-Bitcoin-Forensics.git
+cd SIH-2026-Bitcoin-Forensics
+```
+
+Create a virtual environment:
+
+```bash
+python3 -m venv .venv
 source .venv/bin/activate
 ```
 
 Install dependencies:
 
 ```bash
-python -m pip install -r requirements.txt
+python -m pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
 Run the complete project:
@@ -92,46 +128,42 @@ chmod +x run_full_project.sh run_pipeline.sh
 ./run_full_project.sh
 ```
 
-Launch the dashboard:
-
-```bash
-streamlit run app/dashboard.py
-```
-
 ---
 
 ## Windows
 
+Clone the repository:
+
+```powershell
+git clone https://github.com/Cap-Eagle/SIH-2026-Bitcoin-Forensics.git
+cd SIH-2026-Bitcoin-Forensics
+```
+
 Create and activate a virtual environment:
 
-```bat
+```powershell
 python -m venv .venv
 .venv\Scripts\activate
 ```
 
 Install dependencies:
 
-```bat
-python -m pip install -r requirements.txt
+```powershell
+python -m pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
-Run the complete project:
+Run:
 
-```bat
+```powershell
 run_full_project.bat
-```
-
-Launch the dashboard:
-
-```bat
-streamlit run app\dashboard.py
 ```
 
 ---
 
-# Dataset
+# 📦 Dataset
 
-Large generated datasets and intermediate artifacts do not need to be stored directly in Git.
+Large generated datasets are intentionally **not stored in GitHub**.
 
 The repository contains:
 
@@ -139,150 +171,55 @@ The repository contains:
 generate_dataset.py
 ```
 
-which generates the synthetic dataset required for the complete demonstration pipeline.
+which generates the complete synthetic dataset required by the project.
 
-The generated operational inputs include:
+The full-project runner handles dataset generation before executing the forensic pipeline.
+
+Generated data is placed under:
 
 ```text
-data/raw/blockchain_transactions.csv
-data/raw/network_events.csv
-data/raw/ip_enrichment.csv
-
-data/ground_truth/ground_truth.csv
-data/ground_truth/entity_wallet_map.csv
+data/
+├── raw/
+├── correlated/
+└── ground_truth/
 ```
 
-Existing operational data can be checked with:
-
-```bash
-python src/ingest_data.py --validate-existing
-```
+This keeps the repository lightweight while preserving reproducibility.
 
 ---
 
-# Important Modelling Choice
+# 🔬 Behavioral Intelligence
 
-The authoritative Bitcoin transaction representation preserves:
+The detector uses **83 V6/V6.1 behavioral features** across several feature families:
 
 ```text
-Address → Transaction → Address
+Transaction Activity
+        │
+        ├── Timing & Inter-arrival Behavior
+        ├── Rapid Spending
+        ├── Fund Flow
+        ├── Input / Output Structure
+        ├── Fan-in / Fan-out
+        ├── Amount Distribution
+        ├── Structuring Behavior
+        ├── Peel Behavior
+        ├── Cross-Entity Timing
+        ├── Rapid Multi-Hop Chains
+        ├── Amount Retention
+        └── Network Evidence
 ```
 
-This preserves multi-input and multi-output Bitcoin transactions without inventing an arbitrary mapping between individual transaction inputs and outputs.
+Feature construction itself is **ground-truth independent**.
 
-Coinbase/seed transactions can therefore remain represented without creating normal incoming address relationships where no input address exists.
-
-Entity resolution is performed separately to construct the entity-level representation used for behavioral analysis.
+Ground-truth labels are used later for supervised model training and benchmark evaluation.
 
 ---
 
-# Behavioral Intelligence Features
+# 🚨 Explainable Alerts
 
-The final detector uses **83 V6/V6.1 behavioral features**.
+Rather than returning only an anomaly score, the final detector produces investigator-friendly reason codes.
 
-They capture multiple classes of forensic behavior, including:
-
-### Transaction Activity
-
-- incoming/outgoing transaction activity
-- transaction inter-arrival timing
-- burst behavior
-- rapid spending
-
-### Flow Behavior
-
-- flow-through behavior
-- amount concentration
-- amount entropy
-- repeated output amounts
-- input/output structure
-
-### Graph Behavior
-
-- fan-in patterns
-- fan-out patterns
-- transaction successors
-- multi-hop behavior
-- temporal outgoing relationships
-
-### Temporal Behavior
-
-- successor delays
-- rapid successor activity
-- rapid-chain depth
-- transaction ancestry timing
-
-### Layering and Structuring
-
-- structuring-band activity
-- repeated structured amounts
-- layering successors
-- amount retention across transaction chains
-
-### Peel Behavior
-
-- small peel outputs
-- peel timing
-- peel amount characteristics
-
-### Network Evidence
-
-- source-IP behavior
-- destination-IP evidence
-- country/ASN evidence
-- Tor-related events
-- hosting-related events
-- blockchain/network timing correlation
-- cross-entity IP sharing
-
----
-
-# Detection Architecture
-
-## Behavioral Detector
-
-The primary detector is a Random Forest classifier operating on the V6/V6.1 behavioral feature representation.
-
-It identifies patterns represented by the labelled evaluation data.
-
-## Novelty Detector
-
-An Isolation Forest provides a secondary unsupervised novelty signal.
-
-This allows the system to highlight entities whose behavior differs significantly from the observed behavioral population.
-
-The novelty detector supplements the primary behavioral classifier rather than replacing it.
-
----
-
-# Explainable Alerts
-
-The final detector generates:
-
-```text
-outputs/final_entity_alerts_v61.csv
-```
-
-Each entity receives information including:
-
-```text
-entity_id
-behavior_probability
-novelty_percentile
-risk_priority
-reason_codes
-```
-
-Risk priorities are represented as:
-
-```text
-CRITICAL
-HIGH
-MEDIUM
-LOW
-```
-
-Example explanation codes include:
+Examples include:
 
 ```text
 RAPID_FORWARDING
@@ -292,84 +229,96 @@ TRANSACTION_BURST
 UNSUPERVISED_NOVELTY
 ```
 
-This allows investigators to understand why an entity was prioritized instead of receiving only an opaque anomaly score.
+Each entity receives information including:
+
+```text
+Entity ID
+Behavior Probability
+Novelty Percentile
+Risk Priority
+Reason Codes
+```
+
+Risk levels are:
+
+```text
+CRITICAL
+HIGH
+MEDIUM
+LOW
+```
+
+This allows investigators to understand **why an entity was prioritized**, rather than treating the model as a black box.
 
 ---
 
-# Evaluation
+# 📊 Evaluation
 
-The supplied synthetic benchmark contains:
-
-```text
-Labelled entities : 1,140
-Benign            : 750
-Anomalous         : 390
-```
-
-The final held-out benchmark produced:
+The V6.1 behavioral detector was evaluated using a held-out test split.
 
 | Metric | Result |
 |---|---:|
-| Accuracy | 99.42% |
-| Precision | 100.00% |
-| Recall | 98.31% |
-| F1 | 99.15% |
-| ROC-AUC | 99.98% |
-| Average Precision | 99.97% |
+| Accuracy | **99.42%** |
+| Precision | **100.00%** |
+| Recall | **98.31%** |
+| F1 Score | **99.15%** |
+| ROC-AUC | **0.9998** |
+| Average Precision | **0.9997** |
 
 Confusion matrix:
 
 ```text
 TN = 112
-FP = 0
-FN = 1
-TP = 58
+FP =   0
+FN =   1
+TP =  58
 ```
 
-These results apply to the supplied synthetic evaluation dataset and should **not** be interpreted as equivalent performance on arbitrary real-world Bitcoin traffic.
+The benchmark uses a **70 / 15 / 15 train-validation-test split**.
 
-After held-out evaluation, the deployment model is retrained using all available labelled entities.
+> **Important:** These results are measured on the project's synthetic benchmark dataset. They demonstrate performance within the generated evaluation environment and should not be interpreted as equivalent performance on unrestricted real-world Bitcoin investigations.
 
 ---
 
-# Project Validation
+# 🖥 Investigation Dashboard
 
-The repository includes an integrity validator:
+Launch the dashboard with:
 
 ```bash
-python src/validate_project.py
+streamlit run app/dashboard.py
 ```
 
-A successful project build should end with:
+The dashboard provides an investigation-oriented interface for exploring:
 
-```text
-PROJECT VALIDATION PASSED
-V6.1 artifacts are internally consistent.
-```
+- Prioritized alerts
+- Suspicious entities
+- Risk levels
+- Behavioral probabilities
+- Novelty scores
+- Reason codes
+- Transaction relationships
+- Entity behavior
+- Investigative leads
 
-The validator checks areas including:
-
-- project structure
-- required input files
-- pipeline outputs
-- model artifacts
-- entity-table consistency
-- behavioral feature counts
-- missing feature values
-- alert schema
-- probability ranges
-- risk labels
-- ground-truth readability
+The dashboard is designed as the primary interface for analysts and demonstration users.
 
 ---
 
-# Repository Structure
+# 📁 Repository Structure
 
 ```text
-SIH_V6/
+SIH-2026-Bitcoin-Forensics/
 │
 ├── app/
 │   └── dashboard.py
+│
+├── data/
+│   ├── raw/
+│   ├── correlated/
+│   └── ground_truth/
+│
+├── models/
+├── outputs/
 │
 ├── src/
 │   ├── ingest_data.py
@@ -378,124 +327,89 @@ SIH_V6/
 │   ├── build_graph.py
 │   ├── resolve_entities.py
 │   ├── build_features_v3.py
-│   ├── resolve_ground_truth_v3.py
 │   ├── build_behavior_features_v6.py
 │   ├── build_behavior_features_v61.py
 │   ├── train_anomaly_model_v5.py
 │   ├── final_detector_v61.py
-│   ├── benchmark_behavior_v61.py
 │   └── validate_project.py
-│
-├── data/
-│   ├── raw/
-│   ├── correlated/
-│   └── ground_truth/
-│
-├── outputs/
-│
-├── models/
 │
 ├── generate_dataset.py
 ├── requirements.txt
-├── run_pipeline.sh
-├── run_pipeline.bat
+│
 ├── run_full_project.sh
 ├── run_full_project.bat
+├── run_pipeline.sh
+├── run_pipeline.bat
+│
 └── README.md
 ```
 
 ---
 
-# Pipeline Stages
+# 👥 Team Development
 
-The complete V6.1 pipeline executes:
+After cloning the repository, teammates can reproduce the complete environment using the full-project runner.
 
-```text
-01  Blockchain ↔ P2P Correlation
-02  Group B Correlation Handoff
-03  Blockchain Graph Construction
-04  Entity Resolution
-05  V3 Base Entity Feature Engineering
-06  Ground-Truth Entity Resolution
-07  V6 Behavioral Feature Engineering
-08  V6.1 Temporal / Cross-Entity Feature Engineering
-09  Isolation Forest Novelty Model
-10  Final V6.1 Forensic Detector
+### Generate data and run everything
+
+```bash
+./run_full_project.sh
 ```
 
-Linux/macOS:
+### Run the pipeline using existing data
 
 ```bash
 ./run_pipeline.sh
 ```
 
-Windows:
+### Validate the project
 
-```bat
-run_pipeline.bat
+```bash
+python src/validate_project.py
 ```
 
----
+A successful validation should end with:
 
-# Dashboard
+```text
+PROJECT VALIDATION PASSED
+V6.1 artifacts are internally consistent.
+```
 
-Launch the investigation console using:
+### Launch the dashboard
 
 ```bash
 streamlit run app/dashboard.py
 ```
 
-The dashboard provides an investigator-oriented interface for exploring risk-prioritized entities, behavioral explanations, graph relationships, network evidence, and forensic leads.
-
-Model evaluation is deliberately kept separate from the primary investigation workflow so that the operational interface focuses on investigation rather than ML experimentation.
-
----
-
-# Team Development
-
-The project is structured so individual pipeline stages can also be executed independently.
-
-For example:
+For feature development, use separate Git branches:
 
 ```bash
-python src/correlate_csv.py
-python src/build_behavior_features_v6.py
-python src/build_behavior_features_v61.py
-python src/final_detector_v61.py
+git pull
+git checkout -b feature/my-feature
+
+# make changes
+
+git add .
+git commit -m "Add my feature"
+git push -u origin feature/my-feature
 ```
 
-This allows team members to work on correlation, graph analysis, feature engineering, detection, or visualization independently while retaining a common end-to-end pipeline.
+Changes can then be merged through a pull request.
 
 ---
 
-# Reproducibility
+# ⚠️ Scope & Limitations
 
-The repository is designed so that a fresh clone can reconstruct the demonstration environment from source rather than requiring hundreds of megabytes of generated CSV artifacts to be committed to Git.
+This platform is an **investigative decision-support system**, not a mechanism for automatically determining criminal activity.
 
-The intended workflow is:
+A high-risk alert indicates behavior that warrants further investigation; it does not prove malicious intent.
 
-```text
-Clone repository
-      ↓
-Install dependencies
-      ↓
-Generate dataset
-      ↓
-Validate inputs
-      ↓
-Run forensic pipeline
-      ↓
-Validate artifacts
-      ↓
-Launch dashboard
-```
+The included dataset is synthetic and is designed for reproducible development, benchmarking, and demonstration. Performance on real-world blockchain and network datasets may differ.
 
 ---
 
-# Scope and Limitations
+## SIH 2026
 
-The included dataset is synthetic and intended for system development, evaluation, and demonstration.
+**Bitcoin Forensics Intelligence Platform — V6.1**
 
-The system produces investigative leads and behavioral risk indicators. A high-risk classification should therefore be treated as evidence for further investigation rather than proof that a wallet or entity is controlled by a criminal actor.
-
-Real-world deployment would require additional data-quality controls, blockchain data ingestion, network observation infrastructure, threat-intelligence integration, model monitoring, and operational validation.
+Built for scalable, explainable, behavior-driven cryptocurrency forensic investigation.
