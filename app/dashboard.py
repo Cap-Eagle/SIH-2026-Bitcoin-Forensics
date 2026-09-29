@@ -424,6 +424,28 @@ def inject_theme() -> None:
             min-height:43px!important;
         }
 
+        /* Keep disabled top-bar selectboxes readable on the light dashboard.
+           Streamlit/BaseWeb otherwise applies a dark disabled state. */
+        [data-testid="stSelectbox"] [data-baseweb="select"] > div {
+            background:#FFFFFF!important;
+            border:1px solid #D5DDEC!important;
+            color:var(--ink)!important;
+            opacity:1!important;
+        }
+        [data-testid="stSelectbox"] [data-baseweb="select"] span,
+        [data-testid="stSelectbox"] [data-baseweb="select"] svg {
+            color:var(--ink)!important;
+            fill:var(--ink)!important;
+            opacity:1!important;
+        }
+        [data-testid="stSelectbox"] [data-baseweb="select"] [aria-disabled="true"],
+        [data-testid="stSelectbox"] [data-baseweb="select"] [data-disabled="true"] {
+            background:#FFFFFF!important;
+            color:var(--ink)!important;
+            -webkit-text-fill-color:var(--ink)!important;
+            opacity:1!important;
+        }
+
         .dark-table-wrap {
             width:100%;
             overflow:auto;
@@ -2069,8 +2091,7 @@ def main() -> None:
     st.divider()
     st.caption(
         "Chain Custody SIH_V6 demonstration console · Offline synthetic evaluation environment. "
-        "Entity clusters are heuristic investigative groupings. Ground-truth labels are used for supervised "
-        "training/evaluation only and are not part of V6/V6.1 feature construction or operational evidence views."
+        "Entity clusters are heuristic investigative groupings."
     )
 
 
